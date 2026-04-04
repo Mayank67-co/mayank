@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Profile | Mayank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="overlay" onclick="enterSite()">
+        <p>TAP TO ENTER</p>
+    </div>
+
+    <video loop id="myVideo" playsinline preload="auto">
+        <source src="mayank.mp4" type="video/mp4">
+    </video>
+
+    <div class="container" id="mainContent">
+        <div class="glass-box">
+            
+            <div class="pfp-container">
+                <img src="pfp.jpg" alt="Profile" class="pfp">
+            </div>
+            
+            <h1 class="user-name">Mayank</h1>
+            
+            <div class="social-icons">
+                <a href="https://www.instagram.com/simply__mayank/" target="_blank" class="icon-btn instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="https://discord.gg/7k96qvbEQM" target="_blank" class="icon-btn discord">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function enterSite() {
+            const overlay = document.getElementById('overlay');
+            const content = document.getElementById('mainContent');
+            const video = document.getElementById('myVideo');
+            overlay.style.opacity = '0';
+            setTimeout(() => { overlay.style.display = 'none'; }, 600);
+            content.style.opacity = '1';
+            content.style.transform = 'scale(1)';
+            video.muted = false; 
+            video.play();
+        }
+    </script>
+</body>
+</html>

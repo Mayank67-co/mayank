@@ -1,0 +1,62 @@
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+    background-color: #000; height: 100vh; width: 100vw;
+    overflow: hidden; display: flex; justify-content: center;
+    align-items: center; font-family: 'Poppins', sans-serif;
+}
+
+#myVideo {
+    position: fixed; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
+    z-index: -1; transform: translate(-50%, -50%); object-fit: cover;
+    filter: brightness(0.6) contrast(1.2);
+}
+
+#overlay {
+    position: fixed; inset: 0; background: black; z-index: 100;
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer; transition: opacity 0.8s ease;
+}
+
+#overlay p { color: white; letter-spacing: 5px; animation: blink 2s infinite; }
+
+.container { opacity: 0; transform: scale(0.9); transition: all 1s ease; }
+
+.glass-box {
+    background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 50px 30px; border-radius: 40px; text-align: center;
+    width: 320px; box-shadow: 0 15px 60px rgba(0,0,0,0.8);
+}
+
+.pfp-container {
+    position: relative; width: 110px; height: 110px; margin: 0 auto 20px;
+    padding: 4px; border-radius: 50%; background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    background-size: 200% 200%; animation: rotateGold 3s linear infinite;
+}
+
+.pfp { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #111; background: #222; }
+
+.user-name { color: white; font-size: 1.8rem; margin-bottom: 30px; font-weight: 700; }
+
+.social-icons { display: flex; justify-content: center; gap: 25px; }
+
+/* Icon Styles */
+.icon-btn {
+    width: 65px; height: 65px; border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; text-decoration: none; transition: 0.4s ease;
+}
+
+/* Official Colors */
+.instagram { color: #E4405F; }
+.discord { color: #5865F2; }
+
+/* Glowing Effects */
+.icon-btn:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.15); }
+.instagram:hover { box-shadow: 0 0 30px #E4405F; border-color: #E4405F; }
+.discord:hover { box-shadow: 0 0 30px #5865F2; border-color: #5865F2; }
+
+@keyframes rotateGold { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+@keyframes blink { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
