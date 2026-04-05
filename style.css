@@ -1,62 +1,166 @@
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
 
 body {
-    background-color: #000; height: 100vh; width: 100vw;
-    overflow: hidden; display: flex; justify-content: center;
-    align-items: center; font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 #myVideo {
-    position: fixed; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
-    z-index: -1; transform: translate(-50%, -50%); object-fit: cover;
-    filter: brightness(0.6) contrast(1.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    filter: brightness(0.65) contrast(1.2) saturate(1.2);
 }
 
 #overlay {
-    position: fixed; inset: 0; background: black; z-index: 100;
-    display: flex; justify-content: center; align-items: center;
-    cursor: pointer; transition: opacity 0.8s ease;
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    cursor: pointer;
+    transition: opacity 0.8s ease;
 }
 
-#overlay p { color: white; letter-spacing: 5px; animation: blink 2s infinite; }
+#overlay p {
+    color: white;
+    letter-spacing: 5px;
+    font-size: 0.9rem;
+    animation: blinkText 2s infinite;
+}
 
-.container { opacity: 0; transform: scale(0.9); transition: all 1s ease; }
+.container {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
 .glass-box {
-    background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 50px 30px; border-radius: 40px; text-align: center;
-    width: 320px; box-shadow: 0 15px 60px rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 50px 35px;
+    border-radius: 40px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 15px 60px rgba(0,0,0,0.9);
 }
 
+/* --- Rotating Gold Border --- */
 .pfp-container {
-    position: relative; width: 110px; height: 110px; margin: 0 auto 20px;
-    padding: 4px; border-radius: 50%; background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
-    background-size: 200% 200%; animation: rotateGold 3s linear infinite;
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 25px;
+    padding: 5px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    background-size: 200% 200%;
+    animation: rotateGold 3s linear infinite;
 }
 
-.pfp { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #111; background: #222; }
+.pfp {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #111;
+}
 
-.user-name { color: white; font-size: 1.8rem; margin-bottom: 30px; font-weight: 700; }
+/* --- Typing Name Effect --- */
+.typing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35px;
+    min-height: 40px;
+}
 
-.social-icons { display: flex; justify-content: center; gap: 25px; }
+#type-name {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
 
-/* Icon Styles */
+.cursor {
+    color: white;
+    font-size: 1.8rem;
+    margin-left: 5px;
+    animation: blinkCursor 0.7s infinite;
+}
+
+/* --- Social Icons & Effects --- */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
 .icon-btn {
-    width: 65px; height: 65px; border-radius: 20px;
-    background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 30px; text-decoration: none; transition: 0.4s ease;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 32px;
+    text-decoration: none;
 }
 
-/* Official Colors */
 .instagram { color: #E4405F; }
 .discord { color: #5865F2; }
 
-/* Glowing Effects */
-.icon-btn:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.15); }
-.instagram:hover { box-shadow: 0 0 30px #E4405F; border-color: #E4405F; }
-.discord:hover { box-shadow: 0 0 30px #5865F2; border-color: #5865F2; }
+/* Floating & Glow Effects */
+.icon-btn:hover {
+    transform: translateY(-10px) scale(1.1);
+}
 
-@keyframes rotateGold { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
-@keyframes blink { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+.instagram:hover {
+    box-shadow: 0 0 30px #E4405F;
+    border-color: #E4405F;
+    background: rgba(228, 64, 95, 0.1);
+}
+
+.discord:hover {
+    box-shadow: 0 0 30px #5865F2;
+    border-color: #5865F2;
+    background: rgba(88, 101, 242, 0.1);
+}
+
+/* Animations */
+@keyframes rotateGold {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@keyframes blinkCursor {
+    50% { opacity: 0; }
+}
+
+@keyframes blinkText {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
